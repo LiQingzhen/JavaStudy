@@ -21,7 +21,7 @@ public class CodelineCount {
 	
 	public static void main(String[] args) {
 		
-		File file = new File("F:\\code");
+		File file = null;
 		BufferedReader br = null;
 		String line = null;
 		String path;
@@ -29,6 +29,7 @@ public class CodelineCount {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Please input a file path like \"F:\\\\code\"");
 		path = scanner.nextLine();
+		file = new File(path);
 		
 		File[] files = file.listFiles();
 		for(int i = 0; i < files.length; i++){

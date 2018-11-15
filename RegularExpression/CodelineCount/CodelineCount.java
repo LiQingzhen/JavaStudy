@@ -27,7 +27,7 @@ public class CodelineCount {
 		String path;
 		
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please input a file path like \"F:\\\\code\"");
+		System.out.println("Please input a file path like \"F:\\code\"");
 		path = scanner.nextLine();
 		file = new File(path);
 		
@@ -49,7 +49,7 @@ public class CodelineCount {
 							
 							// annotationLine START
 							annotationLine++;
-							flag = true;
+							if(!line.endsWith("*/"))	flag = true;
 						}else if(line.matches(".*\\*/$")){
 							
 							// annotationLine END

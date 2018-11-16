@@ -23,7 +23,7 @@ public class Yard extends Frame{
 	Egg egg = new Egg();
 	Wall wall = new Wall();
 	
-	// Ë«»º³å
+	// åŒç¼“å†²
 	
 	
 	private class Wall{
@@ -46,7 +46,7 @@ public class Yard extends Frame{
 			g.setColor(color);
 		}
 		
-		// Åö×²¼ì²â -- ÉßÍ·ºÍÇ½
+		// ç¢°æ’æ£€æµ‹ -- è›‡å¤´å’Œå¢™
 		public void isCollided(Snake snake){
 			
 			Rectangle r = snake.getRectangle();
@@ -63,7 +63,7 @@ public class Yard extends Frame{
 	
  	public Yard() {
 		
-		setTitle("Snake v1.0");
+		setTitle("Snake v1.1");
 		setLocation(350, 100);
 		setSize(WIDTH, HEIGHT);
 		setBackground(Color.BLACK);
@@ -73,7 +73,7 @@ public class Yard extends Frame{
 	
 	public void start(){
 		
-		// ¼àÌı´°¿ÚÍË³ö
+		// ç›‘å¬çª—å£é€€å‡º
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e){
 				setVisible(false);
@@ -81,7 +81,7 @@ public class Yard extends Frame{
 			}
 		});
 		
-		// ¼üÅÌ·½Ïò¼ü¸Ä±äÉßÍ··½Ïò
+		// é”®ç›˜æ–¹å‘é”®æ”¹å˜è›‡å¤´æ–¹å‘
 		addKeyListener(new KeyMonitor());
 		
 		new Thread(new PaintThread()).start();
@@ -92,7 +92,7 @@ public class Yard extends Frame{
 		
 		Color color = g.getColor();
 		
-		// Íø¸ñÏß
+		// ç½‘æ ¼çº¿
 //		g.setColor(Color.WHITE);
 //		for(int i=0; i<ROW; i++)
 //			g.drawLine(0, i*BLOCK, WIDTH, i*BLOCK);
@@ -100,7 +100,7 @@ public class Yard extends Frame{
 //			g.drawLine(i*BLOCK, 0, i*BLOCK, HEIGHT);		
 
 		snake.move();
-		// »­ÔºÇ½,»­Éß,»­µ°
+		// ç”»é™¢å¢™,ç”»è›‡,ç”»è›‹
 		g.setColor(Color.WHITE);
 		g.drawString("score:" + (snake.getSize()*5-5), BLOCK*2, 4*BLOCK);
 		wall.drawWall(g);
@@ -117,7 +117,7 @@ public class Yard extends Frame{
 		snake.isEatEgg(egg);	
 		
 		if(!snake.isAlive){
-			g.setFont(new Font("ËÎÌå", Font.BOLD, 45));
+			g.setFont(new Font("å®‹ä½“", Font.BOLD, 45));
 			g.drawString("GAME OVER!", 190, 251);
 			stop = true;
 		}

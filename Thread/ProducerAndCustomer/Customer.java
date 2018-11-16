@@ -1,4 +1,3 @@
-package com.producerAndCustomer;
 
 public class Customer implements Runnable {
 	
@@ -10,7 +9,7 @@ public class Customer implements Runnable {
 	@Override
 	public void run() {
 		
-		Integer n = 5;	// Ã¿¸öÏû·ÑÕßÒªÏû·ÑÎå¸öÃæ°ü
+		Integer n = 5;	// æ¯ä¸ªæ¶ˆè´¹è€…è¦æ¶ˆè´¹äº”ä¸ªé¢åŒ…
 		Integer count = 0;
 		while(true){
 			if(n == 0)	break;
@@ -18,12 +17,12 @@ public class Customer implements Runnable {
 				n--;
 			}else{
 				count++;
-				if(count > 2)	break;	// µÈ´ı´ÎÊı³¬¹ı2
+				if(count > 2)	break;	// ç­‰å¾…æ¬¡æ•°è¶…è¿‡2
 			}
 		}
 		if(n == 0)
-			System.out.println(Thread.currentThread().getName() + "³Ô±¥ÁË£¬¡¾Àë¿ª¡¿");
+			System.out.println(Thread.currentThread().getName() + "åƒé¥±äº†ï¼Œã€ç¦»å¼€ã€‘");
 		else
-			System.out.println(Thread.currentThread().getName() + "ÉúÆøÁË£¬¡¾Àë¿ª¡¿");
+			System.out.println(Thread.currentThread().getName() + "ç”Ÿæ°”äº†ï¼Œã€ç¦»å¼€ã€‘");
 	}
 }

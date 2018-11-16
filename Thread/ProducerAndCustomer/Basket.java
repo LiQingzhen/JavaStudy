@@ -1,4 +1,3 @@
-package com.producerAndCustomer;
 
 public class Basket {
 	
@@ -7,19 +6,19 @@ public class Basket {
 	
 	public synchronized boolean put(){
 
-		this.notifyAll();	// Éú²úÕßÌáĞÑÏû·ÑÕßÂòÃæ°ü
+		this.notifyAll();	// ç”Ÿäº§è€…æé†’æ¶ˆè´¹è€…ä¹°é¢åŒ…
 		if(top >= breads.length){
-			System.out.println("Àº×ÓÒÑÂú£¬" + Thread.currentThread().getName() + "Éú²ú½áÊø");
+			System.out.println("ç¯®å­å·²æ»¡ï¼Œ" + Thread.currentThread().getName() + "ç”Ÿäº§ç»“æŸ");
 			return false;
 		}
 		try {
-			Thread.sleep(100);	// Éú²úÒ»¸öÃæ°üĞèÒªÒ»¶¨µÄÊ±¼ä
+			Thread.sleep(100);	// ç”Ÿäº§ä¸€ä¸ªé¢åŒ…éœ€è¦ä¸€å®šçš„æ—¶é—´
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		Bread bread = new Bread(Main.id);
 		breads[top] = bread;
-		System.out.println("µÚ" + breads[top].getId() + "¸öÃæ°ü·ÅÈëÀº×Ó");
+		System.out.println("ç¬¬" + breads[top].getId() + "ä¸ªé¢åŒ…æ”¾å…¥ç¯®å­");
 		top++;
 		Main.id++;
 		return true;
@@ -27,18 +26,18 @@ public class Basket {
 	
 	public synchronized boolean get(){
 		
-		this.notifyAll();;	// Ïû·ÑÕß¼ä»¥ÏàÌáĞÑÂòÃæ°ü
+		this.notifyAll();;	// æ¶ˆè´¹è€…é—´äº’ç›¸æé†’ä¹°é¢åŒ…
 		if(top < 1){
 			try {
-				System.out.println("Ãæ°üÊÛ¿Õ,"+Thread.currentThread().getName()+"µÈ´ı¡­¡­");
-				this.wait(2000);	// ÈôÆäËûÏß³Ì½áÊø£¬×îºóÒ»¸ö´¦ÓÚwait×´Ì¬µÄÏß³Ì½«µÃ²»µ½ÆäËûÏß³ÌµÄ»½ĞÑ£¬ÓÀÔ¶wait£»ËùÒÔÉèÖÃÁË×ÔÎÒ»½ĞÑ
+				System.out.println("é¢åŒ…å”®ç©º,"+Thread.currentThread().getName()+"ç­‰å¾…â€¦â€¦");
+				this.wait(2000);	// è‹¥å…¶ä»–çº¿ç¨‹ç»“æŸï¼Œæœ€åä¸€ä¸ªå¤„äºwaitçŠ¶æ€çš„çº¿ç¨‹å°†å¾—ä¸åˆ°å…¶ä»–çº¿ç¨‹çš„å”¤é†’ï¼Œæ°¸è¿œwaitï¼›æ‰€ä»¥è®¾ç½®äº†è‡ªæˆ‘å”¤é†’
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			return false;
 		}else{
 			top--;
-			System.out.println(Thread.currentThread().getName() + "È¡³öµÚ" + breads[top].getId() + "¸öÃæ°ü");
+			System.out.println(Thread.currentThread().getName() + "å–å‡ºç¬¬" + breads[top].getId() + "ä¸ªé¢åŒ…");
 			return true;
 		}	
 	}

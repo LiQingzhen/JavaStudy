@@ -1,4 +1,3 @@
-package com.producerAndCustomer;
 
 public class Producer implements Runnable {
 	
@@ -12,8 +11,8 @@ public class Producer implements Runnable {
 	public void run() {
 		
 		while(basket.put()){		
-			// 生产面包放入篮子
-			// 任何一个生产者只要放满篮子就可以下班
+			// 鐢熶骇闈㈠寘鏀惧叆绡瓙
+			// 浠讳綍涓�涓敓浜ц�呭彧瑕佹斁婊＄瀛愬氨鍙互涓嬬彮
 		}		
 	}	
 }

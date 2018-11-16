@@ -1,9 +1,8 @@
-package com.producerAndCustomer;
 
 /**
  * 
  * @author LIQINGZHEN
- * ¶àÏß³Ì±à³Ì£ºÉú²úÕßÓëÏû·ÑÕß
+ * å¤šçº¿ç¨‹ç¼–ç¨‹ï¼šç”Ÿäº§è€…ä¸æ¶ˆè´¹è€…
  *	2018-11
  */
 
@@ -17,11 +16,11 @@ public class Main {
 		Customer customer = new Customer(basket);
 		Producer producer = new Producer(basket);
 		
-		// Á½¸öÉú²úÕß
+		// ä¸¤ä¸ªç”Ÿäº§è€…
 		Thread threadP1 = new Thread(producer, "1");
 		Thread threadP2 = new Thread(producer, "2");
 		
-		// ËÄ¸öÏû·ÑÕß
+		// å››ä¸ªæ¶ˆè´¹è€…
 		Thread threadC1 = new Thread(customer, "A");
 		Thread threadC2 = new Thread(customer, "B");
 		Thread threadC3 = new Thread(customer, "C");
@@ -30,7 +29,7 @@ public class Main {
 		threadP1.start();
 		threadP2.start();
 		try {
-			Thread.sleep(100); 	// ÌáÇ°Éú²ú
+			Thread.sleep(100); 	// æå‰ç”Ÿäº§
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

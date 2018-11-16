@@ -7,7 +7,7 @@ public class Snake {
 	private int size = 1;
 	private Node head = new Node(520, 340, Direction.LEFT);	
 	private Node tail = head;
-	public static boolean isAlive = true;
+	public boolean isAlive = true;
 	
 	// Getter
 	public int getSize() {
@@ -54,14 +54,14 @@ public class Snake {
 	}
 	
 	public void isEatEgg(Egg egg){
-		// Åö×²¼ì²â -- ÉßºÍµ°
+		// ç¢°æ’æ£€æµ‹ -- è›‡å’Œè›‹
 		if(this.getRectangle().intersects(egg.getRectangle())){
-			// ³¤´óÒ»½Ú
+			// é•¿å¤§ä¸€èŠ‚
 			addTail();
 			size++;
 			Yard.speed -= 5;
 			
-			// µ°µÄÎ»ÖÃÖØĞÂ³öÏÖ
+			// è›‹çš„ä½ç½®é‡æ–°å‡ºç°
 			egg.resetEgg();
 		}	
 	}
@@ -75,7 +75,7 @@ public class Snake {
 	}
 	
 	public Rectangle getRectangle(){
-		// ÓÃÓÚÅö×²¼ì²â
+		// ç”¨äºç¢°æ’æ£€æµ‹
 		 return new Rectangle(head.node_x, head.node_y, Yard.BLOCK, Yard.BLOCK);
 	}
 	

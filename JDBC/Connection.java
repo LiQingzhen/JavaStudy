@@ -6,15 +6,15 @@ import java.sql.Statement;
 
 /**
  * 2018-11-17
- * »úÆ÷ÉÏÒª°²×°ÁËMySQL
- * Ê¹ÓÃÇ°Òªµ¼ÈëÏà¹Øjar°ü
+ * æœºå™¨ä¸Šè¦å®‰è£…äº†MySQL
+ * ä½¿ç”¨å‰è¦å¯¼å…¥ç›¸å…³jaråŒ…
 */
 
-public class MysqlConnection {
+public class Connection {
 
 	public static void main(String[] args) {
 
-		// Ò»°ãÄ¬ÈÏÓÃÕâ¸öurl
+		// ä¸€èˆ¬é»˜è®¤ç”¨è¿™ä¸ªurl
 		String url = "jdbc:mysql://127.0.0.1:3306/world?" + "serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&"
 				+ "characterSetResults=utf8&useSSL=false&verifyServerCertificate=false&"
 				+ "autoReconnct=true&autoReconnectForPools=true&allowMultiQueries=true";
@@ -23,25 +23,25 @@ public class MysqlConnection {
 
 		Connection connection = null;
 		
-		// java.sql°üÏÂµÄÀà
+		// java.sqlåŒ…ä¸‹çš„ç±»
 		Statement statement = null;
 		ResultSet resultSet = null;
 
 		try {
-			// step_1£º¼ÓÔØMySQLÇı¶¯
+			// step_1ï¼šåŠ è½½MySQLé©±åŠ¨
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			// step_2£ºÁ¬½Óµ½Ö¸¶¨Êı¾İ¿â£¨MySQLÓĞºÜ¶àDataBase£©£»world ÊÇMySQLÌá¹©µÄÊı¾İ¿â
-			// ÓÃ»§Ãû£ºroot£¬ÃÜÂëÊÇ°²×°MySQLÊ±×Ô¼ºÉè¶¨µÄ
+			// step_2ï¼šè¿æ¥åˆ°æŒ‡å®šæ•°æ®åº“ï¼ˆMySQLæœ‰å¾ˆå¤šDataBaseï¼‰ï¼›world æ˜¯MySQLæä¾›çš„æ•°æ®åº“
+			// ç”¨æˆ·åï¼šrootï¼Œå¯†ç æ˜¯å®‰è£…MySQLæ—¶è‡ªå·±è®¾å®šçš„
 			connection = DriverManager.getConnection(url, user, password);
 
-			// step_3£ºÖ´ĞĞSQLÓï¾ä
+			// step_3ï¼šæ‰§è¡ŒSQLè¯­å¥
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery("select * from country");
 
-			// step_4£º´¦Àí·µ»Ø½á¹û
+			// step_4ï¼šå¤„ç†è¿”å›ç»“æœ
 			while (resultSet.next()) {
-				// ´òÓ¡worldÊı¾İ¿âcountry±íÖĞname×Ö¶ÎËùÓĞµÄÖµ
+				// æ‰“å°worldæ•°æ®åº“countryè¡¨ä¸­nameå­—æ®µæ‰€æœ‰çš„å€¼
 				System.out.println(resultSet.getString("name"));
 			}
 
@@ -50,7 +50,7 @@ public class MysqlConnection {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// step_5£º¹Ø±Õ×ÊÔ´£¬ºó´ò¿ªµÄÏÈ¹Ø±Õ
+			// step_5ï¼šå…³é—­èµ„æºï¼Œåæ‰“å¼€çš„å…ˆå…³é—­
 			try {
 				if(resultSet != null){
 					resultSet.close();

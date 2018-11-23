@@ -4,11 +4,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class BatchProcessing {
+public class Batch{
 
 	public static void main(String[] args) {
 
-		// 一般默认用这个url
+		// 涓�鑸粯璁ょ敤杩欎釜url
 		String url = "jdbc:mysql://127.0.0.1:3306/my_practise?" + "serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&"
 				+ "characterSetResults=utf8&useSSL=false&verifyServerCertificate=false&"
 				+ "autoReconnct=true&autoReconnectForPools=true&allowMultiQueries=true";
@@ -24,8 +24,7 @@ public class BatchProcessing {
 			connection = DriverManager.getConnection(url, user, password);
 			statement = connection.createStatement();
 			
-			// 批处理
-			// 创建 dept 表并插入三个元组
+			// 鎵瑰鐞嗭細鍒涘缓 dept 琛ㄥ苟鎻掑叆涓変釜鍏冪粍
 			statement.addBatch("create table dept ("
 					+ "deptno int primary key,"
 					+ "dname varchar(14),"

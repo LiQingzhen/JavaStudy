@@ -7,7 +7,7 @@ import java.sql.Statement;
 /**
  * 2018-11-17
  * 机器上要安装了MySQL
- * 使用前要导入相关jar包
+ * 使用前导入相关jar包
 */
 
 public class Connection {

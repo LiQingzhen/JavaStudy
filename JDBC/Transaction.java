@@ -23,10 +23,10 @@ public class Transaction {
 			connection = DriverManager.getConnection(url, user, password);
 			statement = connection.createStatement();
 
-			// Ä¬ÈÏÇé¿öÏÂÒ»ÌõSQLÓï¾ä¾ÍÊÇÒ»¸öÊÂÎñ£¬ÎªÁË¶¨Òå·ûºÏÒªÇóµÄÊÂÎñ£¬¹Ø±Õ×Ô¶¯Ìá½»
+			// é»˜è®¤æƒ…å†µä¸‹ä¸€æ¡SQLè¯­å¥å°±æ˜¯ä¸€ä¸ªäº‹åŠ¡ï¼Œä¸ºäº†å®šä¹‰ç¬¦åˆè¦æ±‚çš„äº‹åŠ¡ï¼Œå…³é—­è‡ªåŠ¨æäº¤
 			connection.setAutoCommit(false);
 
-			// Åú´¦Àí£º´´½¨ dept±í²¢²åÈëÈı¸öÔª×é
+			// æ‰¹å¤„ç†ï¼šåˆ›å»º deptè¡¨å¹¶æ’å…¥ä¸‰ä¸ªå…ƒç»„
 			statement.addBatch("create table dept (" + "deptno int primary key," + "dname varchar(14),"
 					+ "location varchar(13)" + ")");
 			statement.addBatch("insert into dept values(10, 'A', 'Shandong')");
@@ -34,24 +34,20 @@ public class Transaction {
 			statement.addBatch("insert into dept values(30, 'A', 'Shanghai')");
 			statement.executeBatch();
 
-			// Ìá½»µ±Ç°ÊÂÎñ£»»Ö¸´ÏÖ³¡
+			// æäº¤å½“å‰äº‹åŠ¡ï¼›æ¢å¤ç°åœº
 			connection.commit();
 			connection.setAutoCommit(true);
-
 		} catch (ClassNotFoundException e) {
-
 			e.printStackTrace();
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 			if (connection != null) {
 				try {
-					// ÊÂÎñÄÚ²¿Òì³££¬»Ø¹öµ±Ç°ÊÂÎñ
+					// äº‹åŠ¡å†…éƒ¨å¼‚å¸¸ï¼Œå›æ»šå½“å‰äº‹åŠ¡
 					connection.rollback();
-					// »Ö¸´ÏÖ³¡
+					// æ¢å¤ç°åœº
 					connection.setAutoCommit(true);
 				} catch (SQLException e1) {
-
 					e1.printStackTrace();
 				}
 			}

@@ -1,4 +1,3 @@
-package personal.lab01;
 
 public class Request {
 	private String string;

@@ -1,5 +1,3 @@
-package personal.lab01;
-
 import java.util.ArrayList;
 import java.util.List;
 

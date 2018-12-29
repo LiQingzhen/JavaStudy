@@ -1,5 +1,3 @@
-package personal.lab01;
-
 public class Response {
 	private String string;
 

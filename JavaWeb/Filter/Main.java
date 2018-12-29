@@ -1,4 +1,3 @@
-package personal.lab01;
 
 /**
  * 模拟Servlet中的Filter，学习责任链模式

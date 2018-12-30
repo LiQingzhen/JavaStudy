@@ -7,7 +7,7 @@ public class Client {
 	public static void main(String[] args) {
 		Subject subject = new SubjectImp();
 		
-		// 只能代理实例化对象且必须要实现了接口的（newProxyInstance参数决定的）
+		// 只能代理实现了接口的实例化对象（newProxyInstance参数决定的）
 		Subject subjectProxy = (Subject) Proxy.newProxyInstance(
 				subject.getClass().getClassLoader(), 
 				subject.getClass().getInterfaces(), 

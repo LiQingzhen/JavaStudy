@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 添加约束文件 -->
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- eclipse不会提醒标签内属性名：键盘 Alt + ? -->	
+<!-- 千万不要在第一行添加其他内容 -->
+<mapper namespace = "personal.dao.IStudentDao">
+
+	<insert id="insertStudent" parameterType="personal.beans.Student">
+		<!-- #{XXX},XXX表示Student属性名（注意区分成员变量和属性。mybatis内部利用反射机制将XXX构建为set/get方法） -->
+		insert into student(name, age, score) 
+			values(#{name}, #{age}, #{score})	
+		<!-- 将最近插入的id通过内部反射机制赋值给student的属性id，类型为java.lang.Integer -->
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+			<!-- 也可以使用这个语句：select @@identity -->		
+			select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	
+	<delete id="deleteStudentById" parameterType="java.lang.Integer">
+		delete from student 
+			where id = #{value}	<!-- 此处的#{}只是占位符，里面填什么都可以 -->
+	</delete>
+	
+	
+	<update id="updateStudent" parameterType="personal.beans.Student">
+		update student 
+			set name = #{name}, age = #{age}, score = #{score} 
+			where id = #{id}
+	</update>
+	
+	
+	<!-- 
+		 在主配置文件(config.xml)中可开启/关闭resultType自动映射，默认开启；开启驼峰标识
+		mybatis (resultType)利用反射自动将数据表字段与Student对象的属性映射（前提：它们一样） 
+		  通用方法：
+		 	1）别名(resultType)：select tid as id, tname as name ...
+		 	2）配置resultMap(id标签是比较特殊的)
+		 	
+		 		*****************举例****************
+		 		
+		 		<resultMap type="personal.beans.Student" id="StudentMapper">
+					<id column="tid" property="id"/>
+					<result column="tname" property="name"/>
+					<result column="tage" property="age"/>
+					<result column="tscore" property="score"/>
+				</resultMap>
+		 	   		
+		 	   	<select id="selectStudentByName" resultMap="StudentMapper" parameterType="java.lang.String">
+					select * from student where name like '%' #{value} '%' 
+				</select>
+	 -->
+	<select id="selectAllStudents" resultType="personal.beans.Student">
+		select * from student
+	</select>
+	
+	
+	<select id="selectStudentById" resultType="personal.beans.Student" parameterType="java.lang.Integer">
+		select * from student where id = #{value}
+	</select>
+	
+	
+	<select id="selectStudentByName" resultType="personal.beans.Student" parameterType="java.lang.String">
+		<!-- select * from student where name like concat('%', #{value}, '%') -->
+		<!-- select * from student where name like '%${value}%' -->
+		select * from student where name like '%' #{value} '%' <!-- '%' #{value} '%'间的空格不能省 -->
+	</select>
+	
+</mapper>

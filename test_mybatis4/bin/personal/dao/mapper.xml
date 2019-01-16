@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "personal.dao.IArticleDao">
+
+	<resultMap type="personal.beans.Article" id="articleMapper">
+		<id column="id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="cont" property="content"/>
+		
+		<!-- 递归调用 -->
+		<collection property="children"
+					ofType="personal.beans.Article"
+					select="selectChildrenByParent"
+					column="id">				
+		</collection>
+	</resultMap>
+	
+	<select id="selectChildrenByParent" resultMap="articleMapper" parameterType="java.lang.Integer">
+		select id, title, cont 
+		from article
+		where pid = #{value}
+	</select>
+	
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!-- 添加约束文件 -->
+<!DOCTYPE configuration  
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+	
+	<!-- 指定配置文件：jdbc连接四要素从配置文件读取 -->
+	<!-- 如果四要素直接在本文件中配置，url=jdbc:mysql://127.0.0.1:3306/my_practise?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8&amp;useSSL=false&amp;verifyServerCertificate=false&amp;autoReconnct=true&amp;autoReconnectForPools=true&amp;allowMultiQueries=true&amp;allowPublicKeyRetrieval=true -->
+	<properties resource="jdbc_mysql.properties"></properties>
+	
+	<settings>
+		<setting name="autoMappingBehavior" value="PARTIAL"/>	<!-- 可选值为NONE、PARTIAL(默认)和FULL -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>	<!-- 开启驼峰映射方式 -->
+	</settings>
+	
+	<!-- 配置运行环境，参考官方pdf文件 -->
+	<!-- <environments/>可以包含多个<environment/>,究竟使用哪个取决于default的值 -->
+	<environments default="onlineEM">	
+		<environment id="onlineEM">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.user}"/>
+				<property name="password" value="${jdbc.password}"/>				
+			</dataSource>
+		</environment>		
+		
+	</environments>
+	
+	<!-- 注册映射文件 -->
+	<mappers>
+		<mapper resource = "personal/dao/mapper.xml"/>
+		
+	</mappers>
+	
+</configuration>

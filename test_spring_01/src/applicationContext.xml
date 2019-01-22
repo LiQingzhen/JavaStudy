@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- ServiceFactory factory = new ServiceFactory(); -->
+	<bean id="factory" class="personal.service.ServiceFactory"></bean>
+	<!-- factory.getSomeService; -->
+    <bean id="myService" factory-bean="factory" factory-method="getSomeService"></bean>
+
+	<!-- 如果工厂类中的方法为static的，则可以采用下面这种写法
+		<bean id="myService" class="personal.service.ServiceFactory" factory-method="getSomeService"></bean>
+		类似于： ServiceFactory.getSomeService(); 	 
+	-->
+		
+</beans>

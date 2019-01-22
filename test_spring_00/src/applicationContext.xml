@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- personal.service.SomeService myService = new personal.service.SomeServiceImpl()
+		 scope:
+		 	1)默认值-singleto，单例模式，堆内存中只有一个该对象 
+			2)prototype，原型模式，每当获取myService时都会在堆内存中从新new一个SomeServiceImpl（详见测试类test04）
+		容器中每个bean的初始化完毕之前（不是初始化之前）会由系统调用“bean后处理器”中的一个方法，初始化完毕后会调用其另一个方法。
+	-->
+    <bean id="myService" class="personal.service.SomeServiceImpl" scope="prototype"></bean>
+
+</beans>

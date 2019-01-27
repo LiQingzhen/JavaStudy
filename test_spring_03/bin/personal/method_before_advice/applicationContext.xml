@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- target -->
+	<bean id="myService" class="personal.method_before_advice.SomeService"></bean>
+	
+	<!-- 切面 -->
+	<bean id="myAdvice" class="personal.method_before_advice.MyMethodBeforeAdvice"></bean>
+	
+	<!-- Proxy -->
+	<bean id="proxyService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- <property name="targetName" value="myService"></property> -->
+		<property name="target" ref="myService"></property>
+		
+		<!-- 可以加载多个切面 -->
+		<property name="interceptorNames" value="myAdvice"></property>
+	</bean>
+	
+</beans>

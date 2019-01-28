@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- target -->
+	<bean id="myService" class="personal.advisor01.SomeService"></bean>
+	
+	<!-- 注册切面：Advice -->
+	<bean id="myAdvice" class="personal.advisor01.MyMethodBeforeAdvice"></bean>
+	
+	<!-- 注册切面：Advisor,用来管理Advice的 -->
+	<bean id="myAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<!-- 被管理的Advice -->
+		<property name="advice" ref="myAdvice"></property>
+		<!-- 切入点 -->
+		<property name="mappedNames" value="doFirst,doThird"></property>
+	</bean>
+	
+	<!-- Proxy -->
+	<bean id="proxyService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- <property name="targetName" value="myService"></property> -->
+		<property name="target" ref="myService"></property>
+		
+		<!-- 可以加载多个切面 -->
+		<property name="interceptorNames" value="myAdvisor"></property>
+	</bean>
+	
+</beans>

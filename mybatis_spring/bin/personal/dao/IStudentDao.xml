@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="personal.dao.IStudentDao">
+	<insert id="insertStudent">
+		insert into students(name, age) values(#{name}, #{age})
+	</insert>
+	
+	<delete id="deleteStudent">
+		delete from students where id = #{value}
+	</delete>
+	
+	<update id="updateStudent">
+		update students set name = #{name}, age = #{age} where id = #{id}
+	</update>
+	
+	<select id="selectAllStudents" resultType="personal.beans.Student">
+		select id, name, age from students
+	</select>
+	
+	<select id="selectStudentById" resultType="personal.beans.Student">
+		select id, name, age from students where id = #{value}
+	</select>
+</mapper>

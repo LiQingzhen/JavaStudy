@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>tesy</title>
+		<script>
+			window.onload = function (){
+				var oDiv = document.getElementById('d1');
+				var is = oDiv.getElementsByTagName('input');
+				var ds = oDiv.getElementsByTagName('div');
+				for(var i=0; i<is.length; i++){
+					is[i].onclick = function (){
+						for(var i=0; i<is.length; i++){
+							is[i].className = '';
+							// 自定义属性
+							is[i].index = i;
+							ds[i].style.display = 'none';
+							
+						}
+						this.className = 'box';
+						ds[this.index].style.display = 'block';
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<style>
+		#d1 div{
+			width:200px;
+			height:300px;
+			background:#CCC;
+			display:none;
+		}
+		#d1 .box{
+			background:yellow;
+		}
+	</style>
+	<body>
+		<div id="d1">
+			<input type="button" value="教育" />
+			<input type="button" value="医疗" />
+			<input type="button" value="政府" />
+			<input type="button" value="娱乐" />
+			<div>111</div>
+			<div>222</div>
+			<div>333</div>
+			<div>444</div>
+		</div>
+	</body>
+</html>

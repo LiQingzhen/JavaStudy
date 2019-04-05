@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>tesy</title>
+		<script>
+			window.onload = function (){
+				var oDiv1 = document.getElementById('d1');
+				var oDiv2 = document.getElementById('d2');
+				var timer = null;
+				// 可以连等
+				oDiv1.onmouseover = oDiv2.onmouseover = function (){
+					clearTimeout(timer);
+					oDiv2.style.display = 'block';
+				}
+				oDiv1.onmouseout = oDiv2.onmouseout = function (){
+					timer = setTimeout(
+						function (){
+							oDiv2.style.display = 'none';
+						},
+						500
+					);
+				}
+			}
+		</script>
+	</head>
+	<style>
+		div{
+			float:left;
+			margin:10px;
+		}
+		#d1{
+			width:100px;
+			height:100px;
+			background:yellow;
+		}
+		#d2{
+			background:#CCC;
+			width:200px;
+			height:150px;
+			display:none;
+		}
+	</style>
+	<body>
+		<div id="d1"></div>
+		<div id="d2"></div>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>onmouse</title>
+	</head>
+	<link id="l1" rel="stylesheet" type="text/css" href="skin1.css"/>
+	<script>
+		function skin1(){
+			var oLink = document.getElementById('l1');
+			oLink.href='skin1.css';
+		}
+		function skin2(){
+			var oLink = document.getElementById('l1');
+			oLink.href='skin2.css';
+		}
+	</script>
+	<body>
+		<input type="button" value="skin1" onclick="skin1()"/>
+		<input type="button" value="skin2" onclick="skin2()"/>
+	</body>
+</html>

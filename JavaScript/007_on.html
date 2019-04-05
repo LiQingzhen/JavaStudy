@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>tesy</title>
+		<!-- 将js写在head标签内 -->
+		<script>
+			window.onload = function (){
+				var temp = document.getElementById('btn');
+				// 事件的提取，因为事件出现在行间有风险；匿名函数
+				temp.onclick = function (){
+					alert('LiQingzhen');
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<input id="btn", type="button" value="button"/>
+	</body>
+</html>

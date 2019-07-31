@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="personal.dao.IPaperDao">
+
+	<resultMap type="personal.beans.Paper" id="paperMapper">
+		<id column="paper_id" property="id"/>
+		<result column="paper_limit" property="limit"/>
+		<result column="paper_mdate" property="mdate"/>
+		<result column="paper_grade" property="grade"/>
+		<result column="paper_choice" property="choice"/>
+		<result column="paper_judge" property="judge"/>
+		<result column="paper_blank" property="blank"/>
+		<result column="paper_program" property="program"/>
+		<result column="paper_cs" property="choiceScore"/>
+		<result column="paper_js" property="judgeScore"/>
+		<result column="paper_bs" property="blankScore"/>
+		<result column="paper_ps" property="programScore"/>
+	</resultMap>
+	
+	<insert id="insertPaper">
+		insert into paper
+			(paper_id, paper_limit, paper_mdate, paper_grade, paper_choice, paper_judge, paper_blank, paper_program, paper_cs, paper_js, paper_bs, paper_ps) 
+		values
+			(null, #{limit}, #{mdate}, #{grade}, #{choice}, #{judge}, #{blank}, #{program}, #{choiceScore}, #{judgeScore}, #{blankScore}, #{programScore})
+	</insert>
+	
+	<delete id="deletePaperById">
+		delete from paper where paper_id = #{value}
+	</delete>
+	
+	<update id="updatePaper">
+		update paper 
+		set paper_limit = #{limit}, 
+			paper_mdate = #{mdate},
+			paper_grade = #{grade},
+			paper_choice = #{choice},
+			paper_judge = #{judge},
+			paper_blank = #{blank},
+			paper_program = #{program},
+			paper_cs = #{choiceScore},
+			paper_js = #{judgeScore},
+			paper_bs = #{blankScore},
+			paper_ps = #{programScore}
+		where paper_id = #{id}
+	</update>
+	
+	<select id="selectPaperById" resultMap="paperMapper">
+		select 
+			paper_id, paper_limit, paper_mdate, paper_grade, paper_choice, paper_judge, paper_blank, paper_program, paper_cs, paper_js, paper_bs, paper_ps
+		from paper
+		where paper_id = #{value}
+	</select>
+	
+	<select id="selectAllPapers" resultMap="paperMapper">
+		select 
+			paper_id, paper_limit, paper_mdate, paper_grade, paper_choice, paper_judge, paper_blank, paper_program, paper_cs, paper_js, paper_bs, paper_ps
+		from paper
+	</select>
+
+</mapper>

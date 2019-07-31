@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration  
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+	<typeAliases>
+		<package name="personal.beans"/>
+	</typeAliases>
+
+	<!-- 要求映射文件（xml）必须与Dao层接口名一致 -->
+	<mappers>
+		<package name="personal.dao"/>
+	</mappers>
+</configuration>

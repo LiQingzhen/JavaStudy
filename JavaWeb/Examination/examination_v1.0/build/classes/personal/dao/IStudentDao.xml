@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="personal.dao.IStudentDao">
+
+	<resultMap type="personal.beans.Student" id="studentMapper">
+		<id column="stu_id" property="id"/>
+		<result column="stu_name" property="name"/>
+		<result column="stu_pwd" property="pwd"/>
+		<result column="stu_sex" property="sex"/>
+		<result column="stu_grade" property="grade"/>
+		<result column="stu_class" property="classs"/>
+		<result column="stu_major" property="major"/>
+		<result column="stu_mail" property="mail"/>
+		<result column="stu_phone" property="phone"/>
+		<result column="stu_address" property="address"/>
+		<result column="stu_rdate" property="rdate"/>
+	</resultMap>
+	
+	<insert id="insertStudent">
+		insert into student
+			(stu_id, stu_name, stu_pwd, stu_sex, stu_grade, stu_class, stu_major, stu_mail, stu_phone, stu_address, stu_rdate) 
+		values
+			(#{id}, #{name}, #{pwd}, #{sex}, #{grade}, #{classs}, #{major}, #{mail}, #{phone}, #{address}, #{rdate})
+	</insert>
+	
+	<delete id="deleteStudentById">
+		delete from student where stu_id = #{value}
+	</delete>
+	
+	<update id="updateStudent">
+		update student 
+		set stu_name = #{name}, 
+			stu_pwd = #{pwd},
+			stu_sex = #{sex},
+			stu_grade = #{grade},
+			stu_class = #{classs},
+			stu_major = #{major},
+			stu_mail = #{mail},
+			stu_phone = #{phone},
+			stu_address = #{address},
+			stu_rdate = #{rdate} 
+		where stu_id = #{id}
+	</update>
+	
+	<select id="selectAllStudents" resultMap="studentMapper">
+		select 
+			stu_id, stu_name, stu_pwd, stu_sex, stu_grade, stu_class, stu_major, stu_mail, stu_phone, stu_address, stu_rdate
+		from student
+		limit #{arg0}, #{arg1}
+	</select>
+	
+	<select id="selectStudentById" resultMap="studentMapper">
+		select
+			stu_id, stu_name, stu_pwd, stu_sex, stu_grade, stu_class, stu_major, stu_mail, stu_phone, stu_address, stu_rdate
+		from student 
+		where stu_id = #{value}
+	</select>
+	
+	<select id="selectCount" resultType="java.lang.Integer">
+		select count(*)
+		from student 
+	</select>
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="personal.dao.IExamDao">
+
+	<resultMap type="personal.beans.Exam" id="examMapper">
+		<id column="exam_id" property="id"/>
+		<result column="exam_name" property="name"/>
+		<result column="exam_start" property="start"/>
+		<result column="exam_time" property="time"/>
+		<result column="exam_point" property="point"/>
+		<result column="exam_score" property="score"/>
+		<result column="exam_paper" property="paper"/>
+	</resultMap>
+	
+	<insert id="insertExam">
+		insert into exam
+			(exam_id, exam_name, exam_start, exam_time, exam_point, exam_score, exam_paper) 
+		values
+			(#{id}, #{name}, #{start}, #{time}, #{point}, #{score}, #{paper})
+	</insert>
+	
+	<delete id="deleteExamById">
+		delete from exam where exam_id = #{value}
+	</delete>
+	
+	<update id="updateExam">
+		update exam 
+		set exam_name = #{name}, 
+			exam_start = #{start},
+			exam_time = #{time},
+			exam_point = #{point},
+			exam_score = #{score},
+			exam_paper = #{paper},
+		where exam_id = #{id}
+	</update>
+	
+	<select id="selectExamById" resultMap="examMapper">
+		select 
+			exam_id, exam_name, exam_start, exam_time, exam_point, exam_score, exam_paper
+		from exam
+		where exam_id = #{value}
+	</select>
+	
+	<select id="selectAllExams" resultMap="examMapper">
+		select 
+			exam_id, exam_name, exam_start, exam_time, exam_point, exam_score, exam_paper
+		from exam
+	</select>
+	
+</mapper>

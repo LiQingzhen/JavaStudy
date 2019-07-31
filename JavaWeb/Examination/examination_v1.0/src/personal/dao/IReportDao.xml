@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="personal.dao.IReportDao">
+
+	<resultMap type="personal.beans.Report" id="reportMapper">
+		<id column="stu_id" property="sid"/>
+		<id column="exam_id" property="eid"/>
+		<result column="report_score" property="score"/>
+	</resultMap>
+	
+	<insert id="insertReport">
+		insert into report
+			(stu_id, exam_id, report_score) 
+		values
+			(#{sid}, #{eid},  #{score})
+	</insert>
+	
+	<delete id="deleteReport">
+		delete from report where stu_id = #{arg0} and exam_id = #{arg1}
+	</delete>
+	
+	<update id="updateReport">
+		update report 
+		set report_score = #{score},
+		where stu_id = #{sid} and exam_id = #{eid}
+	</update>
+	
+	<select id="selectReportById" resultMap="reportMapper">
+		select 
+			stu_id, exam_id, report_score
+		from report
+		where stu_id = #{arg0} and exam_id = #{arg1}
+	</select>
+	
+	<select id="selectAllReports" resultMap="reportMapper">
+		select 
+			stu_id, exam_id, report_score
+		from report
+	</select>
+	
+	<select id="selectCountById" resultType="java.lang.Integer">
+		select 
+			count(*)
+		from report
+		where stu_id = #{arg0}
+	</select>
+	
+</mapper>

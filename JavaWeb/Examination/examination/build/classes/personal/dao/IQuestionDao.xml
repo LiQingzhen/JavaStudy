@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="personal.dao.IQuestionDao">
+
+	<resultMap type="personal.beans.Question" id="questionMapper">
+		<id column="qu_id" property="id"/>
+		<result column="qu_details" property="details"/>
+		<result column="qu_answer" property="answer"/>
+		<result column="qu_type" property="type"/>
+		<result column="qu_point" property="point"/>
+		<result column="qu_grade" property="grade"/>
+	</resultMap>
+	
+	<insert id="insertQuestion">
+		insert into question
+			(qu_id, qu_details, qu_answer, qu_type, qu_point, qu_grade) 
+		values
+			(#{id}, #{details}, #{answer}, #{type}, #{point}, #{grade})
+	</insert>
+	
+	<delete id="deleteQuestionById">
+		delete from question where qu_id = #{value}
+	</delete>
+	
+	<update id="updateQuestion">
+		update question 
+		set qu_details = #{details}, 
+			qu_answer = #{answer},
+			qu_type = #{type},
+			qu_point = #{point},
+			qu_grade = #{grade}
+		where qu_id = #{id}
+	</update>
+	
+	<select id="selectQuestionById" resultMap="questionMapper">
+		select 
+			qu_id, qu_details, qu_answer, qu_type, qu_point, qu_grade
+		from question
+		where qu_id = #{value}
+	</select>
+	
+	<select id="selectAllQuestions" resultMap="questionMapper">
+		select 
+			qu_id, qu_details, qu_answer, qu_type, qu_point, qu_grade
+		from question
+	</select>
+	
+	<select id="selectAllChoiceQuestions" resultMap="questionMapper">
+		select 
+			qu_id, qu_details, qu_answer, qu_type, qu_point, qu_grade
+		from question
+		where qu_type = '0'
+	</select>
+	
+	<select id="selectAllBlankQuestions" resultMap="questionMapper">
+		select 
+			qu_id, qu_details, qu_answer, qu_type, qu_point, qu_grade
+		from question
+		where qu_type = '1'
+	</select>
+	
+	<select id="selectAllJudgeQuestions" resultMap="questionMapper">
+		select 
+			qu_id, qu_details, qu_answer, qu_type, qu_point, qu_grade
+		from question
+		where qu_type = '2'
+	</select>
+	
+	<select id="selectAllProgramQuestions" resultMap="questionMapper">
+		select 
+			qu_id, qu_details, qu_answer, qu_type, qu_point, qu_grade
+		from question
+		where qu_type = '3'
+	</select>
+	
+</mapper>

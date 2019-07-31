@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="personal.dao.ITempReportDao">
+
+	<resultMap type="personal.beans.TempReport" id="tempReportMapper">
+		<id column="exam_id" property="eid"/>
+		<result column="exam_name" property="ename"/>
+		<result column="exam_score" property="escore"/>
+		<result column="report_score" property="rscore"/>
+		<result column="exam_paper" property="epaper"/>
+	</resultMap>
+	
+	<select id="selectReportsByStudentId" resultMap="tempReportMapper">
+		select 
+			r.exam_id, exam_name, exam_score, report_score, exam_paper
+		from report r left join exam e on r.exam_id = e.exam_id
+		where r.stu_id = #{arg0}
+		limit #{arg1}, #{arg2}
+	</select>
+	
+</mapper>

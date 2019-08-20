@@ -1,5 +1,3 @@
-package com.copote.utils;
-
 import java.util.UUID;
 
 /**

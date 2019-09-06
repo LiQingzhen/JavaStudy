@@ -1,5 +1,3 @@
-package com.ems.util;
-
 import java.io.InputStream;
 import java.util.Properties;
 

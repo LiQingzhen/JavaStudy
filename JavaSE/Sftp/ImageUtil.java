@@ -1,5 +1,3 @@
-package com.ems.util;
-
 import java.util.Base64;
 import java.util.Base64.Decoder;
 

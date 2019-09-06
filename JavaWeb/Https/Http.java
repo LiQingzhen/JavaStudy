@@ -3,6 +3,21 @@
 				HttpPost httpPost;
 				String responseEntity = null;
 				
+				//CloseableHttpClient client = HttpClients.createDefault();
+				//HttpPost post = new HttpPost(URL);
+				//JSONObject response = null;
+
+				//StringEntity s = new StringEntity(jsonData);
+				//s.setContentEncoding("UTF-8");
+				//s.setContentType("application/json");
+				//post.setEntity(s);
+				//HttpResponse res = client.execute(post);
+				//if (res.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+//					HttpEntity entity = res.getEntity();
+//					String result = EntityUtils.toString(res.getEntity());
+//					response = JSONObject.fromObject(result);
+//				}
+				//logger.info(">>>>>>>>>>>>responseJson:" + response);
 				try {
 					httpPost = new HttpPost(url);
 					httpClient = HttpClients.createDefault();
